@@ -1,5 +1,8 @@
 # Tilt Arena – Anything but a Game Controller
 
+**play live game:**https://tilt-arena.onrender.com
+open the link through laptop, scan the QR with mobile phone.
+
 Turn your phone into a real-time motion controller for a browser game on your laptop.
 Tilt to roll your ball, grab stars, shake (or tap **Jump**) to hop over holes. First to 10 wins. Up to 8 phones can play together.
 
