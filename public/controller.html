@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Tilt Arena – Controller</title>
+<link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#1d6b57">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#10201b;--felt:#1d6b57;--wood:#6b4428;--line:#28473e;--ink:#f3efe6;--soft:#a9bdb3;--gold:#ffc94a;--ok:#5be39b;--bad:#ff7a6b;--me:#ffc94a}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:16px/1.45 "IBM Plex Sans",system-ui,sans-serif;overscroll-behavior:none}
+.screen{min-height:100%;padding:20px;display:flex;flex-direction:column;gap:14px}
+.hide{display:none!important}
+h1{font:800 2.2rem/1 "Bricolage Grotesque",sans-serif;margin:8px 0 0}
+label{color:var(--soft);font-size:.9rem}
+input{width:100%;font:inherit;font-size:1.3rem;padding:13px;border-radius:12px;border:2px solid var(--line);background:#16302a;color:var(--ink)}
+#room{text-transform:uppercase;letter-spacing:.2em;font-weight:600}
+button{font:inherit;border:none;border-radius:14px;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.go{background:var(--gold);color:#10201b;font-weight:600;font-size:1.15rem;padding:16px}
+.err{color:var(--bad)}
+.soft{color:var(--soft);font-size:.88rem}
+.top{display:flex;justify-content:space-between;align-items:center}
+.status{display:flex;align-items:center;gap:8px;font-size:.92rem}
+.led{width:11px;height:11px;border-radius:50%;background:var(--bad)}
+.led.on{background:var(--ok)} .led.wait{background:var(--gold)}
+.me{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-radius:14px;background:#16302a;border-left:8px solid var(--me)}
+.me b{font:800 2rem "Bricolage Grotesque",sans-serif}
+.level{position:relative;width:min(72vw,300px);aspect-ratio:1;margin:6px auto;border-radius:50%;background:var(--felt);border:12px solid var(--wood)}
+.level::before,.level::after{content:"";position:absolute;background:rgba(255,255,255,.12)}
+.level::before{left:50%;top:0;bottom:0;width:2px}
+.level::after{top:50%;left:0;right:0;height:2px}
+#bubble{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,var(--me) 30%,#000 140%);will-change:transform}
+.pads{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;margin-top:auto}
+.pad{padding:30px 0;font:800 1.5rem "Bricolage Grotesque",sans-serif;color:#10201b;background:var(--gold)}
+.pad.b{background:#4da3ff}
+.pad:active,.pad.hit{transform:scale(.96);filter:brightness(1.15)}
+.cal{background:transparent;color:var(--ink);border:2px solid var(--line);padding:12px}
+</style>
+</head>
+<body>
+<section class="screen" id="setup">
+  <h1>Tilt Arena</h1>
+  <p class="soft">Hold your phone upright in portrait, like a steering tray.</p>
+  <label for="room">Room code (shown on the laptop)</label>
+  <input id="room" maxlength="4" autocomplete="off" placeholder="ABCD">
+  <label for="name">Your name</label>
+  <input id="name" maxlength="12" placeholder="Anamika">
+  <button class="go" id="start">Connect and play</button>
+  <p class="err" id="err"></p>
+</section>
+
+<section class="screen hide" id="pad">
+  <div class="top">
+    <div class="status"><span class="led" id="led"></span><span id="stat">Connecting…</span></div>
+    <span class="soft" id="lat">– ms</span>
+  </div>
+  <div class="me"><span id="who">Player</span><b id="score">0</b></div>
+  <div class="level"><div id="bubble"></div></div>
+  <p class="soft" id="sensor" style="text-align:center;margin:0">Waiting for motion sensors…</p>
+  <button class="cal" id="cal">Calibrate: set current position as neutral</button>
+  <div class="pads">
+    <button class="pad" id="jump">Jump</button>
+    <button class="pad b" id="boost">Boost</button>
+  </div>
+  <p class="soft" style="text-align:center;margin:0">Tip: a quick shake also jumps</p>
+</section>
+<script src="controller.js"></script>
+</body>
+</html>

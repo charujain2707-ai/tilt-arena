@@ -1,0 +1,10 @@
+{
+  "name": "Tilt Arena Controller",
+  "short_name": "Tilt Arena",
+  "start_url": "/controller.html",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "#10201b",
+  "theme_color": "#1d6b57",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

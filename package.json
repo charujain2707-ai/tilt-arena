@@ -1,0 +1,16 @@
+{
+  "name": "tilt-arena",
+  "version": "1.0.0",
+  "description": "Turn your phone into a real-time motion controller for a browser game",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4",
+    "ws": "^8.18.0"
+  }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tilt Arena – Game</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#10201b;--panel:#16302a;--line:#28473e;--ink:#f3efe6;--soft:#9fb5ab;--gold:#ffc94a;--ok:#5be39b;--bad:#ff7a6b}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font:15px/1.45 "IBM Plex Sans",system-ui,sans-serif}
+.wrap{display:flex;height:100%}
+canvas{flex:1;min-width:0;height:100%;display:block}
+aside{width:290px;background:var(--panel);border-left:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:14px;overflow:auto}
+h1{font:800 1.6rem/1 "Bricolage Grotesque",sans-serif;margin:0}
+.code{font:800 2.6rem/1 "Bricolage Grotesque",sans-serif;letter-spacing:.12em;color:var(--gold)}
+.soft{color:var(--soft);font-size:.88rem}
+#qrSmall{background:#fff;padding:6px;border-radius:10px;width:max-content;line-height:0}
+.status{display:flex;align-items:center;gap:8px;font-size:.88rem}
+.led{width:10px;height:10px;border-radius:50%;background:var(--bad)}
+.led.on{background:var(--ok)}
+.p{display:grid;grid-template-columns:14px 1fr auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.p .c{width:14px;height:14px;border-radius:50%}
+.p b{font:800 1.3rem "Bricolage Grotesque",sans-serif}
+.p.off{opacity:.45}
+#join{position:fixed;inset:0;right:290px;display:grid;place-items:center;background:rgba(16,32,27,.88)}
+#join.hide{display:none}
+.card{text-align:center}
+.card h2{font:800 2.4rem/1.1 "Bricolage Grotesque",sans-serif;margin:0 0 6px}
+#qrBig{background:#fff;padding:10px;border-radius:16px;display:inline-block;margin:18px 0;line-height:0}
+button{font:inherit;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 12px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <canvas id="cv"></canvas>
+  <aside>
+    <h1>Tilt Arena</h1>
+    <div class="status"><span class="led" id="hostLed"></span><span id="hostStatus">Connecting…</span></div>
+    <div><div class="soft">Room code</div><div class="code" id="code">····</div></div>
+    <div id="qrSmall"></div>
+    <div class="soft" id="url"></div>
+    <div><div class="soft">Players · first to 10</div><div id="list"></div></div>
+    <button id="newGame">New round</button>
+  </aside>
+</div>
+<div id="join"><div class="card">
+  <h2>Scan with your phone to play</h2>
+  <div class="soft">or open <span id="url2"></span> and enter code <strong id="code2"></strong></div>
+  <div id="qrBig"></div>
+  <div class="soft">Tilt to roll · shake or tap Jump to hop over holes · Boost for speed</div>
+</div></div>
+<script src="game.js"></script>
+</body>
+</html>
